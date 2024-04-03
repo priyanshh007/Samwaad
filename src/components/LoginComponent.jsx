@@ -5,14 +5,17 @@ import { LoginAPI,RegisterAPI } from "../api/AuthAPI";
 import '../firebaseConfig';
 import GoogleButton from "react-google-button";
 import { toast } from 'react-toastify';
+import {useNavigate} from "react-router-dom";
 
 
 export default function Logincomponent(){
+    let navigate=useNavigate();
     const [credentials,setCredentials]=useState({});
     const login=async()=>{
        try{
         let response=await LoginAPI(credentials.email,credentials.password);
-        toast.success('Signed In to samwaad')
+        toast.success('Signed In to samwaad');
+        navigate("/home");
        }
        catch(err)
        {
@@ -47,11 +50,11 @@ export default function Logincomponent(){
          <hr className="hr-text" data-content="or" />
          <div className="google-btn-container">
          <GoogleButton
-        onClick={() => { console.log('Google button clicked') }}
+        onClick={()=>navigate('/home')}
 />      
         <p className="go-to-signup">
           New to Samwaad?{" "}
-          <span className="join-now">
+          <span className="join-now" onClick={()=>navigate('/register')}>
             Join now
           </span>
          </p>
