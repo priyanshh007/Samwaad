@@ -9,7 +9,8 @@ import {useNavigate} from "react-router-dom";
 
 
 export default function Logincomponent(){
-    let navigate=useNavigate();
+   
+     let navigate=useNavigate();
     const [credentials,setCredentials]=useState({});
     const login=async()=>{
        try{

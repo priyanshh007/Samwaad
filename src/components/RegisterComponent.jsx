@@ -1,7 +1,7 @@
 import React,{useState}from "react";
 import "../Sass/LoginComponent.scss";
 import logo from "../assets/logo.png";
-import { LoginAPI,RegisterAPI } from "../api/AuthAPI";
+import { RegisterAPI } from "../api/AuthAPI";
 import '../firebaseConfig';
 import GoogleButton from "react-google-button";
 import { toast } from 'react-toastify';
@@ -10,22 +10,22 @@ import {useNavigate} from "react-router-dom";
 export default function RegisterComponent() {
     let navigate=useNavigate();
     const [credentials,setCredentials]=useState({});
-    const login=async()=>{
+    const register=async()=>{
        try{
-        let response=await LoginAPI(credentials.email,credentials.password);
-        toast.success('Signed In to samwaad');
+        let response=await RegisterAPI(credentials.email,credentials.password);
+        toast.success('Account created!');
         navigate("/home");
        }
        catch(err)
        {
-        toast.error("Please Check your credentials");
+        toast.error("can't create your account !!");
        }
   };
 
   return (
     <div className="login-wrapper">
      <img src={logo} className="logo"/>
-    <h1 className="heading-sign">  Sign in</h1>
+    <h1 className="heading-sign">  Sign up </h1>
     <div className="auth-input">
     <div>
     <input onChange={(event)=>
@@ -43,23 +43,18 @@ export default function RegisterComponent() {
     </input>
     </div>
     </div>
-    <button onClick={login} className="login-btn">
-      Sign in
+    <button onClick={register} className="login-btn">
+    Agree & Join
     </button>
-     <hr className="hr-text" data-content="or" />
-     <div className="google-btn-container">
-     <GoogleButton
-    onClick={()=>navigate('/home')}
-/>      
-    <p className="go-to-signup">
-      New to Samwaad?{" "}
-      <span className="join-now" onClick={()=>navigate('/register')}>
-        Join now
-      </span>
-     </p>
-     </div>
+    <hr class="hr-text" data-content="or" />
+      <div className="google-btn-container">
+        <p className="go-to-signup">
+          Already on Samwaad?{" "}
+          <span className="join-now" onClick={() => navigate("/login")}>
+            Sign in
+          </span>
+        </p>
+      </div>
     </div>
-
-    
     )
 }

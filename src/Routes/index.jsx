@@ -10,8 +10,8 @@ import HomeLayout from "../pages/Home";
 
 export const router = createBrowserRouter([
   {
-    path: "/",
-    element: <Login />,
+    path: "/login",
+    element: <Login/>,
   },
   {
     path: "/register",
