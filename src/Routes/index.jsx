@@ -5,10 +5,14 @@ import {
   } from "react-router-dom";
 import Login from "../pages/Login";
 import Register from "../pages/Register";
-import HomeLayout from "../pages/Home";
+import HomeLayout from "../layouts/Homelayout";
 
 
 export const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Login/>,
+  },
   {
     path: "/login",
     element: <Login/>,

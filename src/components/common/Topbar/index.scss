@@ -1,20 +1,24 @@
 .topbar-main {
-    width: 100%;
+    width: 100vw;
     height: 70px;
-    background-color: rgba(255, 255, 255, 0.87);
+    background-color: rgba(239, 250, 230, 0.87);
     display: flex;
     align-items: center;
+    margin-bottom: 550px;
   }
-  .linkedin-logo {
-    width: 65px;
+  .logo {
+    width: 100px;
+    height: 100px;
+    position: relative;
     margin-left: 20px;
+   
   }
   .react-icons {
     display: flex;
     align-items: center;
     justify-content: space-between;
     width: 55%;
-    margin-left: 30px;
+    margin-left: 20px;
   }
   
   .react-icon {
@@ -31,9 +35,13 @@
     height: 40px;
     border-radius: 50%;
     object-fit: cover;
-    position: absolute;
-    right: 30px;
+    position: relative;
+    right: 10px;
     cursor: pointer;
+  }
+  .user-logo:hover{
+    height: 50px;
+    opacity: 0.5;
   }
   
   .popup-position {
