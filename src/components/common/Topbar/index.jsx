@@ -18,7 +18,7 @@ import { useNavigate } from "react-router-dom";
 export default function Topbar(){
   const goToRoute = (route) => {
     navigate(route);}
-  return(<div className="topbar-main">
+    return(<div className="topbar-main">
             <img className="logo" src={logo} alt="logo" />
             <AiOutlineSearch
               size={30}
