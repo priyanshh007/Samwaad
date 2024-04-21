@@ -15,8 +15,10 @@ export const postStatus=(status)=>{
     });
 };
 
-export const getPosts=()=>{
-    onSnapshot(dbRef,(respnse)=>{
-        console.log(respnse)
+export const getStatus=()=>{
+    onSnapshot(dbRef,(response)=>{
+        console.log(response.docs.map((docs)=>{
+            return {...docs.data(),id:docs.id};
+        }));
     })
 }
