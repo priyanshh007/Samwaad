@@ -7,18 +7,10 @@ import "./index.scss";
 const ModalComponent = ({
   modalOpen,
   setModalOpen,
- sendStatus,
+  sendStatus,
    setStatus,
    status,
-  // isEdit,
-  // updateStatus,
-  // uploadPostImage,
-  // setPostImage,
-  // postImage,
-  // currentPost,
-  // setCurrentPost,
 }) => {
-  const [progress, setProgress] = useState(0);
   return (
     <>
       <Modal
@@ -26,13 +18,13 @@ const ModalComponent = ({
         centered
         open={modalOpen}
         onOk={() => {
-         // setStatus("");
+          setStatus("");
           setModalOpen(false);
          // setPostImage("");
          // setCurrentPost({});
         }}
         onCancel={() => {
-         // setStatus("");
+           setStatus("");
           setModalOpen(false);
           // setPostImage("");
           // setCurrentPost({});
@@ -42,7 +34,7 @@ const ModalComponent = ({
                 onClick={sendStatus}
                 key="submit"
                 type="primary"
-                disabled={status.length  > 0 ? false : true}>
+                disabled={status.length > 0 ? false : true}>
                   Post
               </Button>,
             ]}>

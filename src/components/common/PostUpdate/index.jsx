@@ -10,7 +10,7 @@ export default function PostStatus(){
  const sendStatus=async()=>{
    await postStatus(status);
    await setModalOpen(false);
-   await sendStatus("");
+   await setStatus("");
  };
 
 useMemo(()=>{
