@@ -1,6 +1,7 @@
      import React, { useEffect, useState } from "react";
      import logo from "../../../assets/logo.png";
      import user from "../../../assets/user.png";
+     import { onLogout } from "../../../api/AuthAPI";
 // //import SearchUsers from "../SearchUsers";
     import {
       AiOutlineHome,
@@ -12,19 +13,23 @@
 import { useNavigate } from "react-router-dom";
   import { BsBriefcase } from "react-icons/bs";
 // import { getAllUsers } from "../../../api/FirestoreAPI";
-// import ProfilePopup from "../ProfilePopup";
+ //import ProfilePopup from "../ProfilePopup";
+import ProfilePopup from "../ProfilePopup";
  import "./index.scss";
  
 export default function Topbar(){
   const goToRoute = (route) => {
     navigate(route);}
+    const aya=async()=>{
+       await onLogout()
+    }
     return(<div className="topbar-main">
             <img className="logo" src={logo} alt="logo" />
-            <AiOutlineSearch
+            {/* <AiOutlineSearch
               size={30}
               className="react-icon react-icons"
               // onClick={() => setIsSearch(true)}
-            />
+            /> */}
             <AiOutlineHome
               size={30}
               className="react-icon react-icons"
@@ -41,7 +46,10 @@ export default function Topbar(){
             <img
               className="user-logo react-icon react-icons"
               src={user}
+              onClick={aya}
               alt="user"/>
+              <ProfilePopup/>
+              
               
     </div>
   )

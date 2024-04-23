@@ -1,7 +1,9 @@
 import React,{useState}from "react";
 import "../Sass/LoginComponent.scss";
+
 import logo from "../assets/logo.png";
 import { RegisterAPI } from "../api/AuthAPI";
+import { postUserData } from "../api/firestoreAPIs";
 import '../firebaseConfig';
 import GoogleButton from "react-google-button";
 import { toast } from 'react-toastify';
@@ -15,6 +17,8 @@ export default function RegisterComponent() {
         let response=await RegisterAPI(credentials.email,credentials.password);
         toast.success('Account created!');
         navigate("/home");
+        localStorage.setItem('userEmail',response.user.email);
+        localStorage.setItem('username',response.user.name);
        }
        catch(err)
        {
@@ -32,6 +36,14 @@ export default function RegisterComponent() {
      setCredentials({...credentials,email:event.target.value})}
     type="email"
     className="common-input" placeholder="Enter your email"
+    >
+    </input>
+    </div>
+    <div>
+    <input onChange={(event)=>
+     setCredentials({...credentials,name:event.target.value})}
+    type="text"
+    className="common-input" placeholder="Enter your Name"
     >
     </input>
     </div>

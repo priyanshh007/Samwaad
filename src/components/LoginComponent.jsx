@@ -17,6 +17,8 @@ export default function Logincomponent(){
         let response=await LoginAPI(credentials.email,credentials.password);
         toast.success('Signed In to samwaad');
         navigate("/home");
+        localStorage.setItem('userEmail',response.user.email);
+        
        }
        catch(err)
        {
