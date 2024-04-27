@@ -5,10 +5,14 @@ import { postStatus } from "../../../api/firestoreAPIs.jsx";
 import { getStatus } from "../../../api/firestoreAPIs.jsx";
 import "./index.scss";
 import { getCurrentTimeStamp } from "../../../helpers/useMoment.jsx";
+import { getUniqueID } from "../../../helpers/getUniqueid.jsx";
 
-export default function PostStatus(){
+
+
+
+
+export default function PostStatus({currentUser}){
  let userEmail=localStorage.getItem('userEmail');
- let username=localStorage.getItem('username');
  const [modalOpen,setModalOpen]=useState(false);
  const[status,setStatus]=useState("");
  const[allstatuses,setAllStatus]=useState([]);
@@ -16,8 +20,10 @@ export default function PostStatus(){
     let object={
         status:status,
         timeStamp:getCurrentTimeStamp("LLL"),
-        userEmail:userEmail,
-        username:username,
+        userEmail:currentUser.email,
+        username:currentUser.name,
+        postID:getUniqueID(),
+
     };
   //  console.log(getCurrentTimeStamp("LLL"));
    await postStatus(object);

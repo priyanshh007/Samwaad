@@ -34,3 +34,17 @@ export const postUserData = (object) => {
         console.log(err);
       });
   };
+
+
+  export const getCurrentUser=(setCurrentUser)=>{
+    let currEmail=localStorage.getItem("userEmail");
+    onSnapshot(userRef,(response)=>{
+       setCurrentUser(response.docs.map((docs)=>{ return {...docs.data(),userid:docs.id};
+         }).filter((item)=>{
+            return item.email===currEmail;
+         })[0]
+        );
+        //console.log(response.docs[0].);
+        
+    })
+  }

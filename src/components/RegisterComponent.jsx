@@ -16,6 +16,7 @@ export default function RegisterComponent() {
        try{
         let response=await RegisterAPI(credentials.email,credentials.password);
         toast.success('Account created!');
+        postUserData({name:credentials.name,email:credentials.email})
         navigate("/home");
         localStorage.setItem('userEmail',response.user.email);
         localStorage.setItem('username',response.user.name);
